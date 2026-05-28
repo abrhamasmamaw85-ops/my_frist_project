@@ -1,1 +1,1 @@
-# my_frist_project
+my_first_project
