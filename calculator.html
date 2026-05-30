@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background: white;
+            font-family: Arial;
+        }
+
+        .calculator{
+            width: 300px;
+
+            background: greenyellow;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow:0,0,15px rgba(199, 116, 116, 0);
+        }
+
+        input{
+            width: 90%;
+            height: 90px;
+            font-size: 22px;
+            margin-bottom: 8px;
+            text-align: left;
+            padding-right: 10px;
+            background-color: skyblue;
+        }
+
+        button{
+            width: 60px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            cursor: pointer;
+           border-radius: 58px;
+           color:white
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <input type="text" id="display" disabled>
+    <div >
+        <button onclick="clearDisplay()" style="background-color: black">C</button>
+        <button onclick="deleteLast()" style="background-color: black">DEL</button>
+        <button onclick="appendToDisplay('/')" style="background-color: black">÷</button>
+        <button onclick="appendToDisplay('*')" style="background-color: black">×</button>
+    </div>
+
+    <div>
+        <button onclick="appendToDisplay('7')" style="background-color: black" >7</button>
+        <button onclick="appendToDisplay('8')" style="background-color: black">8</button>
+        <button onclick="appendToDisplay('9')" style="background-color: black">9</button>
+        <button onclick="appendToDisplay('-')" style="background-color: black">−</button>
+    </div>
+
+    <div>
+        <button onclick="appendToDisplay('4')" style="background-color: black">4</button>
+        <button onclick="appendToDisplay('5')" style="background-color: black">5</button>
+        <button onclick="appendToDisplay('6')" style="background-color: black">6</button>
+        <button onclick="appendToDisplay('+')" style="background-color: black">+</button>
+    </div>
+
+    <div>
+        <button onclick="appendToDisplay('1')" style="background-color: black">1</button>
+        <button onclick="appendToDisplay('2')" style="background-color: black" >2</button>
+        <button onclick="appendToDisplay('3')" style="background-color: black">3</button>
+        <button onclick="calculate()" style="background-color: black">=</button>
+    </div>
+
+    <div >
+        <button onclick="appendToDisplay('0')" style="width:60px; background-color: black">0</button>
+        <button onclick="appendToDisplay('.')" style="background-color: black">.</button>
+          <button onclick="appendToDisplay('%')" style="background-color: black">%</button>
+            <button onclick="appendToDisplay('00')" style="background-color: black">00</button>
+    </div>
+</div>
+
+<script>
+    function appendToDisplay(value){
+        document.getElementById("display").value += value;
+    }
+
+    function clearDisplay(){
+        document.getElementById("display").value = "";
+    }
+
+    function deleteLast(){
+        let current = document.getElementById("display").value;
+        document.getElementById("display").value = current.slice(0, -1);
+    }
+
+    function calculate(){
+        try{
+            let result = eval(document.getElementById("display").value);
+            document.getElementById("display").value = result;
+        }
+        catch(error){
+            document.getElementById("display").value = "syntaxError";
+        }
+    }
+</script>
+
+</body>
+</html>
